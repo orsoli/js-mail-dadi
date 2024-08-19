@@ -70,9 +70,13 @@ logInBtnElement.addEventListener('click', function(){
         console.log(email) // print in console testing it
         // Create a condition to logIn
         if(userResult === email){
+            logInResultElement.classList.remove('text-danger') // Remove the text danger color if have one
+            logInResultElement.classList.add('text-success') // Added a class for text success color
             logInResultElement.innerText = succesLogIN //add the logIn message in DOM element
             break // Stop the loop. the email is matched
         }else{
+            logInResultElement.classList.remove('text-success') // Remove the text success color if have one
+            logInResultElement.classList.add('text-danger') // Added a class for text danger color
             logInResultElement.innerText = failLogIN //add the logIn message in DOM element 
         }
     }
