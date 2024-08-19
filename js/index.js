@@ -34,6 +34,8 @@ const noWiner = 'This game have no winer'; //nowiner variable
 //? Fake LogIn
 // Create authorixed emails array
 const emails = ['filajorsol@gmail.com', 'marcolance@gmail.com','davideinzaghi@gmail.com','mariusminia@gmail.com']
+const succesLogIN = 'You are logIn successfully'
+const failLogIN = 'Your logIn failed'
 
 
 //---  Procesing phase
@@ -57,3 +59,21 @@ if(playerRendomNr > pcRendomNr){
 
 
 //? Fake LogIn
+// Create an click event listener for button element
+logInBtnElement.addEventListener('click', function(){
+    const userResult = inputEmailElement.value  // get the user value
+    console.log(userResult) // print in console testing it
+
+    // Create for loop to check if the email user is in authorized email list
+    for(i = 0; i < emails.length; i++){
+        const email = emails[i] // Get each email from the list
+        console.log(email) // print in console testing it
+        // Create a condition to logIn
+        if(userResult === email){
+            logInResultElement.innerText = succesLogIN //add the logIn message in DOM element
+            break // Stop the loop. the email is matched
+        }else{
+            logInResultElement.innerText = failLogIN //add the logIn message in DOM element 
+        }
+    }
+})
