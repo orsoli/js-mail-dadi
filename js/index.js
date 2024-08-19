@@ -5,6 +5,14 @@
     Print both rolls and the result on the page.
 */
 
+/*
+ Fake Login
+    Create a list of authorized emails.
+    Ask the user for their email through a small form.
+    Check if the email is in the list of those who can access.
+    Print an appropriate message based on the result of the check.
+*/
+
 // ---  Preparation phase 
 //Retrieve the element interested in DOM
 // ? Dice game
@@ -12,14 +20,24 @@ const playerResultElement = document.getElementById('player-result')
 const pcResultElement = document.getElementById('pc-result')
 const winerElement = document.getElementById('winer')
 
+// ? Fake LogIN
+const inputEmailElement = document.getElementById('input-email')
+const logInBtnElement = document.getElementById('logIn-btn')
+const logInResultElement = document.getElementById('logIn-result')
 
+//Create variables 
+//? Dice game
+const max = 6; // max variable
+const winer = 'The winer is:'; //winer variable
+const noWiner = 'This game have no winer'; //nowiner variable
 
-// Create max variable 
-const max = 6;
-const winer = 'The winer is:';
-const noWiner = 'This game have no winer';
+//? Fake LogIn
+// Create authorixed emails array
+const emails = ['filajorsol@gmail.com', 'marcolance@gmail.com','davideinzaghi@gmail.com','mariusminia@gmail.com']
+
 
 //---  Procesing phase
+//? Dice Game
 //generate the rendom numbers
 const playerRendomNr = Math.floor(Math.random() * max + 1) // player number
 const pcRendomNr = Math.floor(Math.random() * max + 1) // Pc number
@@ -36,3 +54,6 @@ if(playerRendomNr > pcRendomNr){
 }else{
     winerElement.innerText = noWiner
 }
+
+
+//? Fake LogIn
