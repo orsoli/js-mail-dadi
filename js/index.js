@@ -48,36 +48,45 @@ console.log(pcRendomNr) // Print in console the rendom pc number
 // Print in page the player result
 playerResultElement.innerText = playerRendomNr
 pcResultElement.innerText = pcRendomNr
-// Define and print in page the winer
-if(playerRendomNr > pcRendomNr){
-    winerElement.innerText = `${winer} Player`
-}else if(playerRendomNr < pcRendomNr){
-    winerElement.innerText = `${winer} Pc`
-}else{
-    winerElement.innerText = noWiner
-}
 
+// Define and print in page the winer
+let msg = noWiner;
+
+if(playerRendomNr > pcRendomNr){
+   msg = `${winer} Player`
+}else if(playerRendomNr < pcRendomNr){
+    msg = `${winer} Pc`
+}
+// Print the message in page
+winerElement.innerText = msg
 
 //? Fake LogIn
+let isAllowed = false; // Create 'Flag' 
+let message; // Create a message variable
+
 // Create an click event listener for button element
 logInBtnElement.addEventListener('click', function(){
-    const userResult = inputEmailElement.value  // get the user value
+    const userResult = inputEmailElement.value.trim()  // get the user value
     console.log(userResult) // print in console testing it
-
     // Create for loop to check if the email user is in authorized email list
-    for(i = 0; i < emails.length; i++){
+    for(i = 0; !isAllowed && i < emails.length; i++){
         const email = emails[i] // Get each email from the list
         console.log(email) // print in console testing it
         // Create a condition to logIn
-        if(userResult === email){
+        if(email === userResult){
             logInResultElement.classList.remove('text-danger') // Remove the text danger color if have one
             logInResultElement.classList.add('text-success') // Added a class for text success color
-            logInResultElement.innerText = succesLogIN //add the logIn message in DOM element
-            break // Stop the loop. The email is matched
-        }else{
+            message = succesLogIN
+            isAllowed = true
+        } else{
             logInResultElement.classList.remove('text-success') // Remove the text success color if have one
             logInResultElement.classList.add('text-danger') // Added a class for text danger color
-            logInResultElement.innerText = failLogIN //add the logIn message in DOM element 
+            message = failLogIN
         }
+
+        logInResultElement.innerText = message //Print the logIn message in DOM element
+
+
+            
     }
 })
